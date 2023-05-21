@@ -4,49 +4,38 @@ import Detail from "./Components/Detail/Detail";
 import Form from "./Components/Form/Form";
 import Page from "./Components/Page/Page";
 import Home from "./Components/Home/Home";
-import {
-  Router,
-  Route,
-  useLocation,
-} from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function App() {
-  const [videogame, setVideogame] = useState([]);
-
-  const onSearch = (id) => {
-    if (videogame.find((game) => game.id === id)) {
-      return alert("Juego repetido");
-    }
-
-    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.name) {
-          setVideogame((oldGames) => [...oldGames, data]);
-        } else {
-          alert("algo salió mal");
-        }
-      });
-  };
-
-  const onClose = (id) => {
-    setVideogame(videogame.filter((game) => game.id !== id));
-  };
-
+const App = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const allVideogames = useSelector((state) => state.allVideogames);
+  const onSearch = (name) => {
+    if (name) {
+      const game = allVideogames.find((game) =>
+        game.name.toLowerCase().includes(name.toLowerCase())
+      );
+      if (game) {
+        navigate(`/detail/${game.id}`);
+      } else {
+        alert("No se encontró ningún juego con ese nombre");
+      }
+    } else {
+      alert("Ingresa un nombre de juego");
+    }
+  };
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
       {pathname !== "/" && <Nav onSearch={onSearch} />}
-      <Router>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/page" element={<Page />} />
-        <Route path="/detail:id" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail />} />
         <Route path="/form" element={<Form />} />
-      </Router>
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

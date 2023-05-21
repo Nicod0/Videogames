@@ -20,11 +20,13 @@ const getAllVideogames = async (name) => {
 };
 
 const getAllVideogamesApi = async () => {
-  const allVideogamesApi = (
-    await axios(`https://api.rawg.io/api/games?key=${API_KEY}`)
-  ).data.results;
-  const mapApi = allVideogamesApi.map((videogame) => {
-    return {
+  const pageSize = 100;
+  const allVideogames = [];
+  let nextPage = `https://api.rawg.io/api/games?key=${API_KEY}`;
+
+  while (allVideogames.length < pageSize && nextPage) {
+    const response = await axios(nextPage);
+    const videogames = response.data.results.map((videogame) => ({
       id: videogame.id,
       name: videogame.name,
       descripcion: videogame.description,
@@ -34,10 +36,15 @@ const getAllVideogamesApi = async () => {
       imagen: videogame.background_image,
       fechaDeLanzamiento: videogame.released,
       rating: videogame.rating,
-    };
-  });
-  return mapApi;
+    }));
+
+    allVideogames.push(...videogames);
+    nextPage = response.data.next;
+  }
+
+  return allVideogames.slice(0, pageSize);
 };
+
 const getVideogamesDB = async () => {
   const allVideogameDB = await Videogame.findAll();
   return allVideogameDB;
