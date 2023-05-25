@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  align-items: center; /* Alinear verticalmente */
+  background-color: #3f1140;
+  padding: 10px;
+  color: white;
+  margin-top: -10px; /* Ajusta el margen superior como desees */
+}
+
+.playContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.navLinks a {
+  color: #f2ac29;
+  text-decoration: none;
+  margin-right: 10px; /* Ajusta el espaciado entre los enlaces */
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #731007;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.playIcon {
+  color: #f2ac29;
+  margin-right: 5px;
+  font-size: 24px;
+}
+
+.title {
+  color: #d92211;
+  font-size: 2em;
+}

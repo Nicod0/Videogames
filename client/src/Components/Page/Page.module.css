@@ -1,0 +1,41 @@
+/* Page.module.css */
+.heading {
+  color: #f2ac29;
+  font-size: 36px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.paginado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: #f2ac29;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageNumber {
+  color: #d92211;
+  margin: 0 10px;
+  text-decoration: underline;
+}
+.button:hover {
+  background-color: #e6911e;
+}

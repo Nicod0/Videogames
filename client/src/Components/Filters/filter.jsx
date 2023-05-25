@@ -1,17 +1,40 @@
 import { useDispatch } from "react-redux";
-import { filter } from "../../Redux/Actions";
+import {
+  order,
+  orderByRating,
+  filterByGenre,
+  filterByOrigin,
+} from "../../Redux/Actions";
 
-const Filtered = () => {
+const Ordered = () => {
   const dispatch = useDispatch();
 
-  const filters = (event) => {
-    dispatch(filter(event.target.value));
+  const handleOrder = (event) => {
+    dispatch(order(event.target.value));
+  };
+
+  const handleOrderRating = (event) => {
+    let ratingOrder = "mayor";
+    if (event.target.value === "menor") {
+      ratingOrder = "menor";
+    }
+    dispatch(orderByRating(ratingOrder));
+  };
+
+  const handleFilterGenre = (event) => {
+    const genre = event.target.value;
+    dispatch(filterByGenre(genre));
+  };
+
+  const handleFilterOrigin = (event) => {
+    const origin = event.target.value;
+    dispatch(filterByOrigin(origin));
   };
 
   return (
     <div>
       <div>
-        <select onChange={filters} name="ordenamiento" id="order">
+        <select onChange={handleOrder} name="ordenamiento" id="order">
           <option defaultChecked value="0">
             -
           </option>
@@ -20,15 +43,40 @@ const Filtered = () => {
         </select>
       </div>
       <div>
-        <select onChange={filters} name="rating" id="rat">
+        <select
+          onChange={handleOrderRating}
+          name="ordenamiento_rating"
+          id="rating"
+        >
           <option defaultChecked value="0">
             -
           </option>
-          <option value="mayor">Mayor</option>
-          <option value="menor">Menor</option>
+          <option value="mayor">Mayor rating</option>
+          <option value="menor">Menor rating</option>
+        </select>
+      </div>
+      <div>
+        <select onChange={handleFilterGenre} name="filtro_genero" id="genre">
+          <option defaultChecked value="all">
+            Todos los géneros
+          </option>
+          <option value="Action">Action</option>
+          <option value="Indie">Indie</option>
+          {/* Agrega aquí los demás géneros */}
+        </select>
+      </div>
+      <div>
+        <select onChange={handleFilterOrigin} name="filtro_origen" id="origin">
+          <option defaultChecked value="all">
+            Todos los orígenes
+          </option>
+          <option value="API">API</option>
+          <option value="Database">Database</option>
+          {/* Agrega aquí los demás orígenes */}
         </select>
       </div>
     </div>
   );
 };
-export default Filtered;
+
+export default Ordered;

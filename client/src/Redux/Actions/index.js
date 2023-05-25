@@ -1,6 +1,9 @@
 import axios from "axios";
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
-export const FILTERS = "FILTERS";
+export const ORDER = "ORDER";
+export const ORDER_BY_RATING = "ORDER_BY_RATING";
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 
 export const addVideogame = (info) => {
   return async function (dispatch) {
@@ -31,11 +34,37 @@ export const getVideogames = () => {
   };
 };
 
-export const filter = (filter) => {
+export const order = (order) => {
   return async function (dispatch) {
     return dispatch({
-      type: FILTERS,
-      payload: filter,
+      type: ORDER,
+      payload: order,
+    });
+  };
+};
+
+export const orderByRating = (rating) => {
+  return async function (dispatch) {
+    return dispatch({
+      type: ORDER_BY_RATING,
+      payload: rating,
+    });
+  };
+};
+export const filterByGenre = (genre) => {
+  return async function (dispatch) {
+    return dispatch({
+      type: FILTER_BY_GENRE,
+      payload: genre,
+    });
+  };
+};
+
+export const filterByOrigin = (origin) => {
+  return async function (dispatch) {
+    return dispatch({
+      type: FILTER_BY_ORIGIN,
+      payload: origin,
     });
   };
 };

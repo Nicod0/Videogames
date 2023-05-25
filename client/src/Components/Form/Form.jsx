@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addVideogame } from "../../Redux/Actions/index";
+import styles from "./Form.module.css";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -12,9 +13,10 @@ const Form = () => {
     descripcion: "",
     plataformas: "",
     fechaDeLanzamiento: "",
+    generos: [],
   });
   const [errors, setErrors] = useState({
-    name: "Nombre requirido",
+    name: "Nombre requerido",
     imagen: "Imagen requerida en formato URL",
     descripcion: "Descricpcion requerida",
     plataformas: "Plataformas requeridas",
@@ -34,13 +36,59 @@ const Form = () => {
   };
   const validate = (input, name) => {
     if (name === "name") {
-      if (input.name !== "") setErrors({ ...errors, name: "" });
-      else setErrors({ ...errors, name: "Nombre requirido" });
+      if (input.name.trim() !== "") {
+        setErrors({ ...errors, name: "" });
+      } else {
+        setErrors({ ...errors, name: "Nombre requerido" });
+      }
       return;
     }
+
     if (name === "imagen") {
-      if (input.imagen !== "") setErrors({ ...errors, imagen: "" });
-      else setErrors({ ...errors, imagen: "imagen requerida en formato URL" });
+      const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+      if (input.imagen.trim() !== "" && urlRegex.test(input.imagen)) {
+        setErrors({ ...errors, imagen: "" });
+      } else {
+        setErrors({ ...errors, imagen: "Imagen requerida en formato URL" });
+      }
+      return;
+    }
+
+    if (name === "descripcion") {
+      if (input.descripcion.length > 15) {
+        setErrors({ ...errors, descripcion: "" });
+      } else {
+        setErrors({
+          ...errors,
+          descripcion: "La descripción debe tener al menos 15 caracteres",
+        });
+      }
+      return;
+    }
+
+    if (name === "plataformas") {
+      if (input.plataformas.trim() !== "") {
+        setErrors({ ...errors, plataformas: "" });
+      } else {
+        setErrors({ ...errors, plataformas: "Plataformas requeridas" });
+      }
+      return;
+    }
+
+    if (name === "fechaDeLanzamiento") {
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+      if (
+        input.fechaDeLanzamiento.trim() !== "" &&
+        dateRegex.test(input.fechaDeLanzamiento)
+      ) {
+        setErrors({ ...errors, fechaDeLanzamiento: "" });
+      } else {
+        setErrors({
+          ...errors,
+          fechaDeLanzamiento:
+            "Fecha de lanzamiento requerida en formato 'yyyy-mm-dd'",
+        });
+      }
       return;
     }
   };
@@ -61,7 +109,12 @@ const Form = () => {
   };
 
   const handleRatingChange = (event) => {
-    setRating(parseInt(event.target.value, 10));
+    const value = parseInt(event.target.value, 10);
+    setRating(value);
+    setState({
+      ...state,
+      rating: value,
+    });
   };
 
   const handleGenreChange = (event) => {
@@ -69,8 +122,16 @@ const Form = () => {
 
     if (checked) {
       setSelectedGenres([...selectedGenres, value]);
+      setState((prevState) => ({
+        ...prevState,
+        generos: [...prevState.generos, value],
+      }));
     } else {
       setSelectedGenres(selectedGenres.filter((genre) => genre !== value));
+      setState((prevState) => ({
+        ...prevState,
+        generos: prevState.generos.filter((genre) => genre !== value),
+      }));
     }
   };
 
@@ -78,51 +139,83 @@ const Form = () => {
     event.preventDefault();
     dispatch(addVideogame(state));
   };
-
+  console.log(state);
+  console.log(selectedGenres);
   return (
-    <div>
-      <h1>Guarda un videojuego!!</h1>
+    <div className={styles.container}>
+      <h1 className={styles.titulo}>Guarda un videojuego!!</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input type="text" name="name" onChange={handleChange} />
+        <div className={styles.formGroup}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="name" className={styles.label}>
+              Name:
+            </label>
+            <input
+              type="text"
+              name="name"
+              onChange={handleChange}
+              className={styles.input}
+            />
             {errors["name"]}
           </div>
-          <div>
-            <label htmlFor="imagen">Imagen:</label>
-            <input type="text" name="imagen" onChange={handleChange} />
+          <div className={styles.inputGroup}>
+            <label htmlFor="imagen" className={styles.label}>
+              Imagen:
+            </label>
+            <input
+              type="text"
+              name="imagen"
+              onChange={handleChange}
+              className={styles.input}
+            />
             {errors["imagen"]}
           </div>
-          <div>
-            <label htmlFor="descripcion">Descripcion:</label>
+          <div className={styles.inputGroup}>
+            <label htmlFor="descripcion" className={styles.label}>
+              Descripcion:
+            </label>
             <textarea
               name="descripcion"
               cols="30"
               rows="10"
               onChange={handleChange}
+              className={styles.input}
             />
             {errors["descripcion"]}
           </div>
-          <div>
-            <label htmlFor="plataformas">Plataformas:</label>
-            <input type="text" name="plataformas" onChange={handleChange} />
+          <div className={styles.inputGroup}>
+            <label htmlFor="plataformas" className={styles.label}>
+              Plataformas:
+            </label>
+            <input
+              type="text"
+              name="plataformas"
+              onChange={handleChange}
+              className={styles.input}
+            />
             {errors["plataformas"]}
           </div>
-          <div>
-            <label htmlFor="fechaDeLanzamiento">Fecha de lanzamiento:</label>
+          <div className={styles.inputGroup}>
+            <label htmlFor="fechaDeLanzamiento" className={styles.label}>
+              Fecha de lanzamiento:
+            </label>
             <input
               type="text"
               name="fechaDeLanzamiento"
               onChange={handleChange}
+              className={styles.input}
             />
             {errors["fechaDeLanzamiento"]}
           </div>
-          <div>
-            <label htmlFor="rating" onChange={handleRatingChange}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="rating" className={styles.label}>
               Rating:
             </label>
-            <select name="rating" onChange={handleRatingChange}>
+            <select
+              name="rating"
+              onChange={handleRatingChange}
+              className={styles.input}
+            >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -130,9 +223,8 @@ const Form = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <div>
+          <div className={styles.checkboxGroup}>
             <div>
-              <label htmlFor="generos">Generos:</label>
               <label>
                 <input
                   type="checkbox"
@@ -343,7 +435,7 @@ const Form = () => {
             </div>
           </div>
         </div>
-        <button disabled={disable()} type="submit">
+        <button disabled={disable()} type="submit" className={styles.button}>
           Guardar
         </button>
       </form>

@@ -1,6 +1,7 @@
-const { Videogame } = require("../db");
+const { Videogame, Genre } = require("../db");
 const { API_KEY } = process.env;
 const axios = require("axios");
+const { Op } = require("sequelize");
 
 const getAllVideogames = async (name) => {
   const videogamesDB = await getVideogamesDB();
@@ -30,12 +31,13 @@ const getAllVideogamesApi = async () => {
       id: videogame.id,
       name: videogame.name,
       descripcion: videogame.description,
-      plataformas: videogame.platforms.map(
-        (platform) => platform.platform.name
-      ),
+      plataformas: videogame.platforms
+        .map((platform) => platform.platform.name)
+        .join(", "),
       imagen: videogame.background_image,
       fechaDeLanzamiento: videogame.released,
       rating: videogame.rating,
+      genero: videogame.genres.map((gender) => gender.name).join(", "),
     }));
 
     allVideogames.push(...videogames);
@@ -46,7 +48,15 @@ const getAllVideogamesApi = async () => {
 };
 
 const getVideogamesDB = async () => {
-  const allVideogameDB = await Videogame.findAll();
+  const allVideogameDB = await Videogame.findAll({
+    include: {
+      model: Genre,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
   return allVideogameDB;
 };
 
@@ -70,27 +80,35 @@ const getVideogameById = async (id) => {
   return mapVideogame;
 };
 
-const createVideogameDB = async (
-  name,
-  descripcion,
-  plataformas,
-  imagen,
-  fechaDeLanzamiento,
-  rating
-) => {
-  const newVideogame = await Videogame.create({
-    name,
-    descripcion,
-    plataformas,
-    imagen,
-    fechaDeLanzamiento,
-    rating,
-  });
-  return newVideogame;
-};
+// const createVideogameDB = async (
+//   name,
+//   descripcion,
+//   plataformas,
+//   imagen,
+//   fechaDeLanzamiento,
+//   rating
+// ) => {
+//   const newVideogame = await Videogame.create({
+//     name,
+//     descripcion,
+//     plataformas,
+//     imagen,
+//     fechaDeLanzamiento,
+//     rating,
+//   });
+// const genreNames = await Genre.findAll({
+//   where: {
+//     id: {
+//       [Op.in]: generos,
+//     },
+//   },
+// });
+// newVideogame.addGenre(genreNames);
+// return newVideogame;
+// };
 
 module.exports = {
   getAllVideogames,
   getVideogameById,
-  createVideogameDB,
+  // createVideogameDB,
 };
