@@ -1,10 +1,13 @@
 .container {
   display: flex;
   align-items: center; /* Alinear verticalmente */
-  background-color: #3f1140;
   padding: 10px;
   color: white;
-  margin-top: -10px; /* Ajusta el margen superior como desees */
+  margin-top: 10px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  background-color: transparent !important;
 }
 
 .playContainer {
@@ -20,7 +23,7 @@
 }
 
 .navLinks a {
-  color: #f2ac29;
+  color: white;
   text-decoration: none;
   margin-right: 10px; /* Ajusta el espaciado entre los enlaces */
   padding: 5px;
@@ -28,7 +31,7 @@
 }
 
 .navLinks a:hover {
-  color: #731007;
+  color: #20e2d7;
 }
 
 .searchbar {
@@ -38,12 +41,12 @@
 }
 
 .playIcon {
-  color: #f2ac29;
+  color: #20e2d7;
   margin-right: 5px;
   font-size: 24px;
 }
 
 .title {
-  color: #d92211;
+  color: white;
   font-size: 2em;
 }

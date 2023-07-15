@@ -70,3 +70,15 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.optionGenre {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: #f2ac29;
+  background-color: #551073;
+  margin-bottom: 10px;
+}
+
+.escondido {
+  display: none;
+}

@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addVideogame } from "../../Redux/Actions/index";
 import styles from "./Form.module.css";
+import { useSelector } from "react-redux";
+import { getGenres } from "../../Redux/Actions/index";
+import { useEffect } from "react";
 
 const Form = () => {
   const dispatch = useDispatch();
+  const genres = useSelector((state) => state.allGenres);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [rating, setRating] = useState(1);
   const [state, setState] = useState({
+    rating: 1,
     name: "",
     imagen: "",
     descripcion: "",
@@ -92,6 +97,9 @@ const Form = () => {
       return;
     }
   };
+  useEffect(() => {
+    dispatch(getGenres());
+  }, []);
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -117,21 +125,20 @@ const Form = () => {
     });
   };
 
-  const handleGenreChange = (event) => {
-    const { value, checked } = event.target;
-
-    if (checked) {
-      setSelectedGenres([...selectedGenres, value]);
-      setState((prevState) => ({
-        ...prevState,
-        generos: [...prevState.generos, value],
-      }));
+  const handleGenreChange = (e) => {
+    const selectedGenre = e.target.value;
+    if (selectedGenre === "clean") {
+      setState({
+        ...state,
+        generos: [],
+      });
     } else {
-      setSelectedGenres(selectedGenres.filter((genre) => genre !== value));
-      setState((prevState) => ({
-        ...prevState,
-        generos: prevState.generos.filter((genre) => genre !== value),
-      }));
+      if (!state.generos.includes(selectedGenre)) {
+        setState({
+          ...state,
+          generos: [...state.generos, selectedGenre],
+        });
+      }
     }
   };
 
@@ -223,218 +230,32 @@ const Form = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <div className={styles.checkboxGroup}>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Action"
-                  checked={selectedGenres.includes("Action")}
-                  onChange={handleGenreChange}
-                />
-                Action
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Indie"
-                  checked={selectedGenres.includes("Indie")}
-                  onChange={handleGenreChange}
-                />
-                Indie
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Adventure"
-                  checked={selectedGenres.includes("Adventure")}
-                  onChange={handleGenreChange}
-                />
-                Adventure
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="RPG"
-                  checked={selectedGenres.includes("RPG")}
-                  onChange={handleGenreChange}
-                />
-                RPG
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Strategy"
-                  checked={selectedGenres.includes("Strategy")}
-                  onChange={handleGenreChange}
-                />
-                Strategy
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Shooter"
-                  checked={selectedGenres.includes("Shooter")}
-                  onChange={handleGenreChange}
-                />
-                Shooter
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Casual"
-                  checked={selectedGenres.includes("Casual")}
-                  onChange={handleGenreChange}
-                />
-                Casual
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Simulation"
-                  checked={selectedGenres.includes("Simulation")}
-                  onChange={handleGenreChange}
-                />
-                Simulation
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Puzzle"
-                  checked={selectedGenres.includes("Puzzle")}
-                  onChange={handleGenreChange}
-                />
-                Puzzle
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Arcade"
-                  checked={selectedGenres.includes("Arcade")}
-                  onChange={handleGenreChange}
-                />
-                Arcade
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Platformer"
-                  checked={selectedGenres.includes("Platformer")}
-                  onChange={handleGenreChange}
-                />
-                Platformer
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Massively Multiplayer"
-                  checked={selectedGenres.includes("Massively Multiplayer")}
-                  onChange={handleGenreChange}
-                />
-                Massively Multiplayer
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Racing"
-                  checked={selectedGenres.includes("Racing")}
-                  onChange={handleGenreChange}
-                />
-                Racing
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Sports"
-                  checked={selectedGenres.includes("Sports")}
-                  onChange={handleGenreChange}
-                />
-                Sports
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Fighting"
-                  checked={selectedGenres.includes("Fighting")}
-                  onChange={handleGenreChange}
-                />
-                Fighting
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Family"
-                  checked={selectedGenres.includes("Family")}
-                  onChange={handleGenreChange}
-                />
-                Family
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Board Games"
-                  checked={selectedGenres.includes("Board Games")}
-                  onChange={handleGenreChange}
-                />
-                Board Games
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Educational"
-                  checked={selectedGenres.includes("Educational")}
-                  onChange={handleGenreChange}
-                />
-                Educational
-              </label>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Card"
-                  checked={selectedGenres.includes("Card")}
-                  onChange={handleGenreChange}
-                />
-                Card
-              </label>
-            </div>
-          </div>
         </div>
+        <label htmlFor="">Generos: </label>
+        <input
+          id="generos"
+          type="text"
+          name="generos"
+          value={state.generos}
+          className={styles.escondido}
+        />
+        <select
+          name="generos"
+          id="generos"
+          value={state.generos}
+          className={styles.optionGenre}
+          onChange={handleGenreChange}
+          multiple
+        >
+          <option value="clean">Clean</option>
+          {genres.map((genre, index) => {
+            return (
+              <option key={index} value={genre.id}>
+                {genre.name}
+              </option>
+            );
+          })}
+        </select>
         <button disabled={disable()} type="submit" className={styles.button}>
           Guardar
         </button>

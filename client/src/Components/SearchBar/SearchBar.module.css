@@ -1,21 +1,23 @@
 .input {
   padding: 5px;
   border: none;
-  background-color: #f2ac29;
-  color: #3f1140;
+  background-color: transparent;
+  color: #0e69de;
   margin-right: 5px;
   transition: background-color 0.3s ease;
+  border-bottom: 2px solid white;
 }
 
 .button {
   padding: 5px 10px;
-  background-color: #d92211;
+  background-color: transparent;
   color: white;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border-bottom: 2px solid white;
 }
 
 .button:hover {
-  background-color: #731007;
+  background-color: #0e69de;
 }

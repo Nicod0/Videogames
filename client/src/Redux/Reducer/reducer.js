@@ -4,12 +4,14 @@ import {
   ORDER_BY_RATING,
   FILTER_BY_GENRE,
   FILTER_BY_ORIGIN,
+  GET_GENRES,
 } from "../Actions";
 
 const initialState = {
   allVideogames: [],
   allGenres: [],
   filteredVideogames: [],
+  orderedVideogames: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -19,22 +21,25 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allVideogames: action.payload,
         filteredVideogames: action.payload,
+        orderedVideogames: action.payload.slice(),
       };
+
     case ORDER:
-      const sortedVideogames = [...state.allVideogames];
+      const sortedVideogames = [...state.filteredVideogames];
+      console.log("hola");
       return {
         ...state,
-        allVideogames:
+        filteredVideogames:
           action.payload === "asc"
             ? sortedVideogames.sort((a, b) => a.name.localeCompare(b.name))
             : sortedVideogames.sort((a, b) => b.name.localeCompare(a.name)),
       };
 
     case ORDER_BY_RATING:
-      const ratingVideogames = [...state.allVideogames];
+      const ratingVideogames = [...state.filteredVideogames];
       return {
         ...state,
-        allVideogames:
+        filteredVideogames:
           action.payload === "mayor"
             ? ratingVideogames.sort((a, b) => b.rating - a.rating)
             : ratingVideogames.sort((a, b) => a.rating - b.rating),
@@ -48,9 +53,10 @@ const rootReducer = (state = initialState, action) => {
           filteredVideogames: videogamesGenre,
         };
       } else {
-        const filteredByGenre = videogamesGenre.filter((game) =>
-          game.genero.includes(genre)
+        const filteredByGenre = videogamesGenre.filter(
+          (game) => game.genero && game.genero.includes(genre)
         );
+
         return {
           ...state,
           filteredVideogames: filteredByGenre,
@@ -81,6 +87,12 @@ const rootReducer = (state = initialState, action) => {
           filteredVideogames: filteredByOrigin,
         };
       }
+    case GET_GENRES: {
+      return {
+        ...state,
+        allGenres: action.payload,
+      };
+    }
 
     default:
       return { ...state };

@@ -4,6 +4,7 @@ export const ORDER = "ORDER";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
+export const GET_GENRES = "GET_GENRES";
 
 export const addVideogame = (info) => {
   return async function (dispatch) {
@@ -35,6 +36,7 @@ export const getVideogames = () => {
 };
 
 export const order = (order) => {
+  console.log(order);
   return async function (dispatch) {
     return dispatch({
       type: ORDER,
@@ -66,5 +68,18 @@ export const filterByOrigin = (origin) => {
       type: FILTER_BY_ORIGIN,
       payload: origin,
     });
+  };
+};
+export const getGenres = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`http://localhost:3001/genres`);
+      return dispatch({
+        type: GET_GENRES,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 };

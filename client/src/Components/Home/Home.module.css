@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+}
+
+.content {
+  text-align: center;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 40px; /* Aumenta el relleno para separar más el contenido del fondo */
+  width: 80%; /* Ajusta el ancho del contenedor centrado */
+  max-width: 600px; /* Establece un ancho máximo para evitar que el contenido se estire demasiado en pantallas grandes */
+  border-radius: 10px; /* Agrega esquinas redondeadas al contenedor */
+}
+
+.title {
+  font-size: 3.5em;
+  margin-bottom: 10px; /* Agrega un margen inferior al título */
+  letter-spacing: 3px;
+  margin-top: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.text {
+  font-size: 1.3em;
+}
+/* Resto de tu CSS... */
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+/* === removing default button style ===*/
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255, 255, 255, 0.6);
+  --animation-color: #20e2d7;
+  --fs-size: 2.4em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+  background-color: transparent;
+  margin-top: 30px;
+}
+/* this is the text, when you hover on button */
+.hover_text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover_text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getVideogames } from "../../Redux/Actions";
 import Ordered from "../Filters/filter";
 import style from "./Page.module.css";
+import videoPrincipal from "../../imagenes/tunel_fondo.mp4";
 
 const Page = () => {
   const dispatch = useDispatch();
@@ -33,18 +34,22 @@ const Page = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className={style.heading}>Videojuegos</h1>
-      <Ordered />
-      <Cards allVideogames={currentGames} />
-      <div className={style.container}>
-        <div className={style.paginado}>
+    <div className={style.container}>
+      <video className="video" autoPlay loop muted>
+        <source src={videoPrincipal} type="video/mp4" />
+      </video>
+      <div className={style.page}>
+        <div className={style.titulos}>
+          <h1 className={style.heading}>Videojuegos</h1>
+          <Ordered />
+        </div>
+        <div className={style.section}>
           <button
             className={style.button}
             onClick={prevPage}
             disabled={currentPage === 1}
           >
-            Anterior
+            ANTERIOR
           </button>
           <span className={style.pageNumber}>{currentPage}</span>
           <button
@@ -52,8 +57,11 @@ const Page = () => {
             onClick={nextPage}
             disabled={currentPage === totalPages}
           >
-            Siguiente
+            SIGUIENTE
           </button>
+          <div className={style.paginado}>
+            <Cards allVideogames={currentGames} />
+          </div>
         </div>
       </div>
     </div>
