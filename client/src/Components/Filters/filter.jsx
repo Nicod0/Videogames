@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import style from "./filter.module.css";
 import {
   order,
   orderByRating,
@@ -32,7 +33,7 @@ const Ordered = () => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <div>
         <select onChange={handleOrder} name="ordenamiento" id="order">
           <option defaultChecked value="0">

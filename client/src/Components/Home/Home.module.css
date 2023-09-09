@@ -66,6 +66,7 @@
   -webkit-text-stroke: 1px var(--text-stroke-color);
   background-color: transparent;
   margin-top: 30px;
+  cursor: pointer;
 }
 /* this is the text, when you hover on button */
 .hover_text {
