@@ -10,25 +10,38 @@
   padding-top: 0;
 }
 .paginado {
+  padding: 3% 2% 2% 1%;
   height: 38vh;
   width: 60%;
   float: right;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
-  margin-right: 5%;
+  margin-top: 3%;
+  margin-right: 4%;
   overflow: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scrollbar-color: transparent transparent;
+  border-radius: 2%;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5),
+    0 0 15px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
 }
 
+.buttons {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  position: relative;
+  left: 13%;
+  margin-top: 2%;
+}
 .button {
+  height: 4em;
+  width: 12em;
   position: relative;
   background-color: #434343;
   color: white;
-  border: 2px solid #20e2d7;
+  border: 2px solid rgba(255, 0, 0, 0.5);
   padding: 10px 20px;
   margin: 0 5px;
   cursor: pointer;
@@ -45,7 +58,7 @@
   right: 0;
   top: 0;
   margin: auto;
-  background-color: #20e2d7;
+  background-color: rgba(255, 0, 0, 0.5);
   transition: all 500ms ease;
   z-index: -1;
 }
@@ -54,7 +67,7 @@
   height: 100%;
 }
 .button:hover {
-  color: #434343;
+  color: white;
 }
 .button:hover::before {
   width: 100%;
@@ -65,9 +78,11 @@
 }
 
 .pageNumber {
-  color: #0e69de;
-  margin: 0 10px;
-  text-decoration: underline;
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-weight: 700;
+  color: rgba(255, 0, 0, 0.5);
+  margin: 0 20px;
 }
 
 .page {

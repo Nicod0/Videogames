@@ -45,21 +45,23 @@ const Page = () => {
         </div>
         <div className={style.page}>
           <div className={style.section}>
-            <button
-              className={style.button}
-              onClick={prevPage}
-              disabled={currentPage === 1}
-            >
-              ANTERIOR
-            </button>
-            <span className={style.pageNumber}>{currentPage}</span>
-            <button
-              className={style.button}
-              onClick={nextPage}
-              disabled={currentPage === totalPages}
-            >
-              SIGUIENTE
-            </button>
+            <div className={style.buttons}>
+              <button
+                className={style.button}
+                onClick={prevPage}
+                disabled={currentPage === 1}
+              >
+                ANTERIOR
+              </button>
+              <span className={style.pageNumber}>{currentPage}</span>
+              <button
+                className={style.button}
+                onClick={nextPage}
+                disabled={currentPage === totalPages}
+              >
+                SIGUIENTE
+              </button>
+            </div>
             <div className={style.paginado}>
               <Cards allVideogames={currentGames} />
             </div>
