@@ -1,23 +1,49 @@
-.input {
-  padding: 5px;
-  border: none;
-  background-color: transparent;
-  color: #0e69de;
-  margin-right: 5px;
-  transition: background-color 0.3s ease;
-  border-bottom: 2px solid white;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
 }
 
-.button {
-  padding: 5px 10px;
-  background-color: transparent;
-  color: white;
+.input {
+  width: 260px;
+  height: 100%;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: white;
+  caret-color: #f7f7f8;
+  color: #fff;
+  padding: 7px 10px;
+  border: 2px solid transparent;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  margin-right: 1px;
+  transition: all 0.2s ease;
+}
+
+.input:hover {
+  border: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+.input:focus {
+  border: 2px solid rgba(255, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.search__btn {
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  border-bottom: 2px solid white;
+  background-color: rgba(42, 42, 45, 1);
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  height: 100%;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button:hover {
-  background-color: #0e69de;
+.search__btn:hover {
+  background-color: rgba(54, 54, 56, 1);
 }

@@ -9,8 +9,12 @@ const Nav = ({ onSearch }) => {
         <h2 className={style.title}>PLAY</h2>
       </div>
       <div className={style.navLinks}>
-        <Link to="/page">Home</Link>
-        <Link to="/form">Create Game</Link>
+        <Link to="/page" className={style.link}>
+          Home
+        </Link>
+        <Link to="/form" className={style.link}>
+          Create Game
+        </Link>
       </div>
       <div className={style.searchbar}>
         <SearchBar onSearch={onSearch} />

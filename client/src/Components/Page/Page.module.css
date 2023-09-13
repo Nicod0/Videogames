@@ -10,9 +10,9 @@
   padding-top: 0;
 }
 .paginado {
-  padding: 3% 2% 2% 1%;
+  padding: 3% 1% 2% 1%;
   height: 38vh;
-  width: 60%;
+  width: 90%;
   float: right;
   display: flex;
   align-items: center;
@@ -32,7 +32,6 @@
   margin-bottom: 0;
   padding-bottom: 0;
   position: relative;
-  left: 13%;
   margin-top: 2%;
 }
 .button {
