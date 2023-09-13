@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Style from "./Detail.module.css";
-import videoPrincipal from "../../imagenes/fondo.mp4";
+import imagen_fondo from "../../imagenes/star-wars.jpg";
 
 const Detail = (props) => {
   const allVideogames = useSelector((state) => state.allVideogames);
@@ -18,9 +18,7 @@ const Detail = (props) => {
     : "";
   return (
     <div>
-      <video className={Style.video} autoPlay loop muted>
-        <source src={videoPrincipal} type="video/mp4" />
-      </video>
+      <img src={imagen_fondo} className={Style.fondo} alt="" />
       <div className={Style.container}>
         {videogame.name ? (
           <>
