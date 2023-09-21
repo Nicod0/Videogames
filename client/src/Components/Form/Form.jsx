@@ -5,6 +5,7 @@ import styles from "./Form.module.css";
 import { useSelector } from "react-redux";
 import { getGenres } from "../../Redux/Actions/index";
 import { useEffect } from "react";
+import imagen_fondo from "../../imagenes/star-wars.jpg";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -149,117 +150,139 @@ const Form = () => {
   console.log(state);
   console.log(selectedGenres);
   return (
-    <div className={styles.container}>
-      <h1 className={styles.titulo}>Guarda un videojuego!!</h1>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="name" className={styles.label}>
-              Name:
-            </label>
-            <input
-              type="text"
-              name="name"
-              onChange={handleChange}
-              className={styles.input}
-            />
-            {errors["name"]}
+    <div>
+      <img src={imagen_fondo} className={styles.fondo} alt="" />
+      <div className={styles.container}>
+        <h1 className={styles.titulo}>Guarda un videojuego!!</h1>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <div className={styles.inputGroup}>
+              <div className={styles.grupo}>
+                <label htmlFor="name" className={styles.label}>
+                  Name:
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+                <p className={styles.error}> {errors["name"]}</p>
+              </div>
+              <div className={styles.grupo}>
+                <label htmlFor="imagen" className={styles.label}>
+                  Imagen:
+                </label>
+                <input
+                  type="text"
+                  name="imagen"
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+                <p className={styles.error}>{errors["imagen"]} </p>
+              </div>
+            </div>
+
+            <div className={styles.inputGroup}>
+              <div className={styles.grupo}>
+                <label htmlFor="descripcion" className={styles.label}>
+                  Descripcion:
+                </label>
+                <textarea
+                  name="descripcion"
+                  cols="30"
+                  rows="10"
+                  onChange={handleChange}
+                  className={styles.input}
+                />
+                <p className={styles.error}>{errors["descripcion"]} </p>
+              </div>
+
+              <div className={styles.grupito}>
+                <div className={styles.grupaso}>
+                  <label htmlFor="plataformas" className={styles.label}>
+                    Plataformas:
+                  </label>
+                  <input
+                    type="text"
+                    name="plataformas"
+                    onChange={handleChange}
+                    className={styles.input}
+                  />
+                  <p className={styles.error}>{errors["plataformas"]} </p>
+                </div>
+
+                <div className={styles.grupaso}>
+                  <label htmlFor="fechaDeLanzamiento" className={styles.label}>
+                    Fecha de lanzamiento:
+                  </label>
+                  <input
+                    type="text"
+                    name="fechaDeLanzamiento"
+                    onChange={handleChange}
+                    className={styles.input}
+                  />
+                  <p className={styles.error}>
+                    {errors["fechaDeLanzamiento"]}{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.inputGroup}>
+              <div className={styles.grupo}>
+                <label htmlFor="rating" className={styles.label}>
+                  Rating:
+                </label>
+                <select
+                  name="rating"
+                  onChange={handleRatingChange}
+                  className={styles.input}
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div className={styles.grupo}>
+                <label htmlFor="" className={styles.label}>
+                  Generos:{" "}
+                </label>
+                <input
+                  id="generos"
+                  type="text"
+                  name="generos"
+                  value={state.generos}
+                  className={styles.escondido}
+                />
+                <select
+                  name="generos"
+                  id="generos"
+                  value={state.generos}
+                  className={styles.optionGenre}
+                  onChange={handleGenreChange}
+                  multiple
+                >
+                  <option value="clean">Clean</option>
+                  {genres.map((genre, index) => {
+                    return (
+                      <option key={index} value={genre.id}>
+                        {genre.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
           </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="imagen" className={styles.label}>
-              Imagen:
-            </label>
-            <input
-              type="text"
-              name="imagen"
-              onChange={handleChange}
-              className={styles.input}
-            />
-            {errors["imagen"]}
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="descripcion" className={styles.label}>
-              Descripcion:
-            </label>
-            <textarea
-              name="descripcion"
-              cols="30"
-              rows="10"
-              onChange={handleChange}
-              className={styles.input}
-            />
-            {errors["descripcion"]}
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="plataformas" className={styles.label}>
-              Plataformas:
-            </label>
-            <input
-              type="text"
-              name="plataformas"
-              onChange={handleChange}
-              className={styles.input}
-            />
-            {errors["plataformas"]}
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="fechaDeLanzamiento" className={styles.label}>
-              Fecha de lanzamiento:
-            </label>
-            <input
-              type="text"
-              name="fechaDeLanzamiento"
-              onChange={handleChange}
-              className={styles.input}
-            />
-            {errors["fechaDeLanzamiento"]}
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="rating" className={styles.label}>
-              Rating:
-            </label>
-            <select
-              name="rating"
-              onChange={handleRatingChange}
-              className={styles.input}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-        </div>
-        <label htmlFor="">Generos: </label>
-        <input
-          id="generos"
-          type="text"
-          name="generos"
-          value={state.generos}
-          className={styles.escondido}
-        />
-        <select
-          name="generos"
-          id="generos"
-          value={state.generos}
-          className={styles.optionGenre}
-          onChange={handleGenreChange}
-          multiple
-        >
-          <option value="clean">Clean</option>
-          {genres.map((genre, index) => {
-            return (
-              <option key={index} value={genre.id}>
-                {genre.name}
-              </option>
-            );
-          })}
-        </select>
-        <button disabled={disable()} type="submit" className={styles.button}>
-          Guardar
-        </button>
-      </form>
+          <button className={styles.button} disabled={disable()} type="submit">
+            {" "}
+            Guardar
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -45,3 +45,35 @@
   color: white;
   font-size: 2.5em;
 }
+
+@media (min-width: 280px) and (max-width: 380px) {
+  .title {
+    color: white;
+    font-size: 1.2em;
+  }
+  .navLinks {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+  }
+  .playContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+  }
+  .navLinks a {
+    color: white;
+    text-decoration: none;
+    margin: 0 3px; /* Ajusta el espaciado entre los enlaces */
+    padding: 5px;
+    transition: color 0.3s ease;
+  }
+}
+@media (min-width: 381px) and (max-width: 576px) {
+}
+@media (min-width: 577px) and (max-width: 767px) {
+}
+@media (min-width: 800px) and (max-width: 1199px) {
+}
+@media (min-width: 1200px) and (max-width: 1600px) {
+}

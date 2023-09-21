@@ -18,16 +18,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 40px; /* Aumenta el relleno para separar más el contenido del fondo */
-  width: 80%; /* Ajusta el ancho del contenedor centrado */
-  max-width: 600px; /* Establece un ancho máximo para evitar que el contenido se estire demasiado en pantallas grandes */
-  border-radius: 10px; /* Agrega esquinas redondeadas al contenedor */
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  width: 96%;
+  border-radius: 10px;
 }
 
 .title {
   font-size: 3.5em;
-  margin-bottom: 10px; /* Agrega un margen inferior al título */
+  margin-bottom: 10px;
   letter-spacing: 3px;
   margin-top: 0px;
   margin-left: 10px;
@@ -37,7 +36,6 @@
 .text {
   font-size: 1.3em;
 }
-/* Resto de tu CSS... */
 
 .video {
   position: absolute;
@@ -48,13 +46,11 @@
   object-fit: cover;
   z-index: -1;
 }
-/* === removing default button style ===*/
 
-/* button styling */
 .button {
   --border-right: 6px;
   --text-stroke-color: rgba(255, 255, 255, 0.6);
-  --animation-color: #20e2d7;
+  --animation-color: rgba(255, 0, 0, 0.5);
   --fs-size: 2.4em;
   letter-spacing: 3px;
   text-decoration: none;
@@ -68,7 +64,7 @@
   margin-top: 30px;
   cursor: pointer;
 }
-/* this is the text, when you hover on button */
+
 .hover_text {
   position: absolute;
   box-sizing: border-box;
@@ -81,8 +77,54 @@
   transition: 0.5s;
   -webkit-text-stroke: 1px var(--animation-color);
 }
-/* hover */
+
 .button:hover .hover_text {
   width: 100%;
   filter: drop-shadow(0 0 23px var(--animation-color));
+}
+@media (min-width: 280px) and (max-width: 380px) {
+  .title {
+    font-size: 1.7em;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .text {
+    font-size: 0.83em;
+  }
+  .centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    width: 75%;
+    border-radius: 10px;
+  }
+  .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --animation-color: rgba(255, 0, 0, 0.5);
+    --fs-size: 1.8em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    background-color: transparent;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+}
+@media (min-width: 381px) and (max-width: 576px) {
+}
+@media (min-width: 577px) and (max-width: 767px) {
+}
+@media (min-width: 800px) and (max-width: 1199px) {
+}
+@media (min-width: 1200px) and (max-width: 1600px) {
 }

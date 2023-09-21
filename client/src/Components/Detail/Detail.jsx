@@ -11,11 +11,8 @@ const Detail = (props) => {
 
   useEffect(() => {
     setVideogame(allVideogames.find((game) => game.id == id));
-  }, []);
+  }, [allVideogames, id]);
 
-  const genre = videogame.genres
-    ? videogame.genres.map((genre) => genre.name).join(", ")
-    : "";
   return (
     <div>
       <img src={imagen_fondo} className={Style.fondo} alt="" />
@@ -28,18 +25,18 @@ const Detail = (props) => {
                 <p>id: {videogame.id} </p>
                 <p>Plataformas: {videogame.plataformas}</p>
                 <p>
-                  Descripcion:{" "}
+                  Descripcion:
                   {videogame.descripcion ? (
                     <>
                       <p>{videogame.descripcion} </p>
                     </>
                   ) : (
-                    <p>No hay descripción</p>
+                    <p>No hay descripción.</p>
                   )}
                 </p>
                 <p>Fecha de lanzamiento: {videogame.fechaDeLanzamiento}</p>
                 <p>Rating: {videogame.rating}</p>
-                <p>Generos: {genre} </p>
+                <p>Generos: {videogame.genero} </p>
               </div>
             </div>
             <img src={videogame.imagen} alt="img" className={Style.imagen} />
