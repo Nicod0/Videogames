@@ -169,10 +169,187 @@
   }
 }
 @media (min-width: 381px) and (max-width: 576px) {
+  .principal {
+    height: 85vh;
+  }
+  .titulos {
+    color: white;
+    font-size: 1.7em;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .paginado {
+    height: 28vh;
+    width: 85%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8%;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-color: transparent transparent;
+    border-radius: 2%;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5),
+      0 0 15px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+  .button {
+    height: 3em;
+    width: 8em;
+    position: relative;
+    background-color: #434343;
+    color: white;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    padding: 5px 10px;
+    margin: 25px 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 500ms ease;
+    font-weight: 700;
+    z-index: 0;
+    font-size: 1em;
+  }
+  .buttons {
+    margin-bottom: 15%;
+    padding-bottom: 0;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-left: -2%;
+  }
+  .pageNumber {
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-weight: 700;
+    color: rgba(255, 0, 0, 0.5);
+    margin: 0 20px;
+  }
 }
 @media (min-width: 577px) and (max-width: 767px) {
+  .principal {
+    height: 85vh;
+  }
+  .titulos {
+    color: white;
+    font-size: 1.7em;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .paginado {
+    height: 28vh;
+    width: 85%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8%;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-color: transparent transparent;
+    border-radius: 2%;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5),
+      0 0 15px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+  .button {
+    height: 3em;
+    width: 8em;
+    position: relative;
+    background-color: #434343;
+    color: white;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    padding: 5px 10px;
+    margin: 25px 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 500ms ease;
+    font-weight: 700;
+    z-index: 0;
+    font-size: 1em;
+  }
+  .buttons {
+    margin-bottom: 15%;
+    padding-bottom: 0;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-left: -2%;
+  }
+  .pageNumber {
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-weight: 700;
+    color: rgba(255, 0, 0, 0.5);
+    margin: 0 20px;
+  }
 }
 @media (min-width: 800px) and (max-width: 1199px) {
+  .principal {
+    height: 85vh;
+  }
+  .titulos {
+    color: white;
+    font-size: 1.7em;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .paginado {
+    height: 28vh;
+    width: 85%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8%;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-color: transparent transparent;
+    border-radius: 2%;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 0, 0, 0.5),
+      0 0 15px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+  .button {
+    height: 3em;
+    width: 8em;
+    position: relative;
+    background-color: #434343;
+    color: white;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    padding: 5px 10px;
+    margin: 25px 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 500ms ease;
+    font-weight: 700;
+    z-index: 0;
+    font-size: 1em;
+  }
+  .buttons {
+    margin-bottom: 15%;
+    padding-bottom: 0;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-left: -2%;
+  }
+  .pageNumber {
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-weight: 700;
+    color: rgba(255, 0, 0, 0.5);
+    margin: 0 20px;
+  }
 }
 @media (min-width: 1200px) and (max-width: 1600px) {
 }

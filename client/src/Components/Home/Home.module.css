@@ -101,6 +101,8 @@
     padding: 40px;
     width: 75%;
     border-radius: 10px;
+    height: 100vh;
+    justify-content: center;
   }
   .button {
     --border-right: 6px;
@@ -121,8 +123,84 @@
   }
 }
 @media (min-width: 381px) and (max-width: 576px) {
+  .title {
+    font-size: 2.5em;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .text {
+    font-size: 1.1em;
+  }
+  .centered {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    width: 80%;
+    border-radius: 10px;
+    justify-content: center;
+  }
+  .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --animation-color: rgba(255, 0, 0, 0.5);
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    background-color: transparent;
+    margin-top: 30px;
+    cursor: pointer;
+  }
 }
 @media (min-width: 577px) and (max-width: 767px) {
+  .title {
+    font-size: 2.5em;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .text {
+    font-size: 1.1em;
+  }
+  .centered {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    width: 88%;
+    border-radius: 10px;
+    justify-content: center;
+  }
+  .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --animation-color: rgba(255, 0, 0, 0.5);
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    background-color: transparent;
+    margin-top: 30px;
+    cursor: pointer;
+  }
 }
 @media (min-width: 800px) and (max-width: 1199px) {
 }
