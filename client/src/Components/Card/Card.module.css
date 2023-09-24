@@ -128,6 +128,20 @@
   }
 }
 @media (min-width: 800px) and (max-width: 1199px) {
+  .card {
+    width: 420px;
+    height: 300px;
+    border-radius: inherit;
+    overflow: hidden;
+    padding-top: 1%;
+  }
+
+  .card_container {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    border-radius: 10px;
+  }
 }
 @media (min-width: 1200px) and (max-width: 1600px) {
 }

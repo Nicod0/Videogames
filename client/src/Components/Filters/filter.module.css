@@ -129,7 +129,7 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2% 0 15% 0;
+    margin: 2% 0 2% 0;
   }
   .separador {
     display: flex;
@@ -144,7 +144,7 @@ select:focus {
   select {
     color: white;
     background-color: #434343;
-    font-size: 0.9em;
+    font-size: 1.2em;
     padding: 5px;
     border: 1px solid rgba(255, 0, 0, 0.5);
     border-radius: 3px;
